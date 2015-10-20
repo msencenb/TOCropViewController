@@ -92,7 +92,7 @@ typedef NS_ENUM(NSInteger, TOCropViewControllerAspectRatio) {
     __weak typeof(self) weakSelf = self;
     self.toolbar.doneButtonTapped =     ^{ [weakSelf doneButtonTapped]; };
     self.toolbar.cancelButtonTapped =   ^{ [weakSelf cancelButtonTapped]; };
-    self.toolbar.resetButtonTapped =    ^{ [weakSelf resetCropViewLayout]; };
+    //self.toolbar.resetButtonTapped =    ^{ [weakSelf resetCropViewLayout]; };
     //self.toolbar.clampButtonTapped =    ^{ [weakSelf showAspectRatioDialog]; };
     self.toolbar.rotateButtonTapped =   ^{ [weakSelf rotateCropView]; };
     
