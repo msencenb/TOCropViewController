@@ -29,14 +29,7 @@
 #import "TOCroppedImageAttributes.h"
 
 typedef NS_ENUM(NSInteger, TOCropViewControllerAspectRatio) {
-    TOCropViewControllerAspectRatioOriginal,
-    TOCropViewControllerAspectRatioSquare,
-    TOCropViewControllerAspectRatio3x2,
-    TOCropViewControllerAspectRatio5x3,
-    TOCropViewControllerAspectRatio4x3,
-    TOCropViewControllerAspectRatio5x4,
-    TOCropViewControllerAspectRatio7x5,
-    TOCropViewControllerAspectRatio16x9
+    TOCropViewControllerAspectRatioKitely
 };
 
 @interface TOCropViewController () <UIActionSheetDelegate, UIViewControllerTransitioningDelegate, TOCropViewDelegate>
@@ -100,12 +93,13 @@ typedef NS_ENUM(NSInteger, TOCropViewControllerAspectRatio) {
     self.toolbar.doneButtonTapped =     ^{ [weakSelf doneButtonTapped]; };
     self.toolbar.cancelButtonTapped =   ^{ [weakSelf cancelButtonTapped]; };
     self.toolbar.resetButtonTapped =    ^{ [weakSelf resetCropViewLayout]; };
-    self.toolbar.clampButtonTapped =    ^{ [weakSelf showAspectRatioDialog]; };
+    //self.toolbar.clampButtonTapped =    ^{ [weakSelf showAspectRatioDialog]; };
     self.toolbar.rotateButtonTapped =   ^{ [weakSelf rotateCropView]; };
     
     self.transitioningDelegate = self;
     
     self.view.backgroundColor = self.cropView.backgroundColor;
+    [self.cropView setAspectLockEnabledWithAspectRatio:CGSizeMake(15.2f, 10.9f) animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -247,7 +241,7 @@ typedef NS_ENUM(NSInteger, TOCropViewControllerAspectRatio) {
 {
     [self.cropView resetLayoutToDefaultAnimated:YES];
     self.cropView.aspectLockEnabled = NO;
-    self.toolbar.clampButtonGlowing = NO;
+    //self.toolbar.clampButtonGlowing = NO;
 }
 
 #pragma mark - Aspect Ratio Handling -
@@ -294,7 +288,7 @@ typedef NS_ENUM(NSInteger, TOCropViewControllerAspectRatio) {
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    CGSize aspectRatio = CGSizeZero;
+    /*CGSize aspectRatio = CGSizeZero;
     
     switch (buttonIndex) {
         case TOCropViewControllerAspectRatioOriginal:
@@ -332,7 +326,7 @@ typedef NS_ENUM(NSInteger, TOCropViewControllerAspectRatio) {
     }
     
     [self.cropView setAspectLockEnabledWithAspectRatio:aspectRatio animated:YES];
-    self.toolbar.clampButtonGlowing = YES;
+    self.toolbar.clampButtonGlowing = YES;*/
 }
 
 - (void)rotateCropView

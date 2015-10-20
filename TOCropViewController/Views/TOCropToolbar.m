@@ -93,13 +93,6 @@
     [_cancelIconButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_cancelIconButton];
     
-    _clampButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    _clampButton.contentMode = UIViewContentModeCenter;
-    _clampButton.tintColor = [UIColor whiteColor];
-    [_clampButton setImage:[TOCropToolbar clampImage] forState:UIControlStateNormal];
-    [_clampButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:_clampButton];
-    
     _rotateButton = [UIButton buttonWithType:UIButtonTypeSystem];
     _rotateButton.contentMode = UIViewContentModeCenter;
     _rotateButton.tintColor = [UIColor whiteColor];
@@ -158,7 +151,7 @@
         }
         
         buttonFrame.origin.x = CGRectGetMaxX(containerRect) - 44.0f;
-        self.clampButton.frame = buttonFrame;
+        //self.clampButton.frame = buttonFrame;
     }
     else {
         CGRect frame = CGRectZero;
@@ -190,7 +183,7 @@
         }
 
         buttonFrame.origin.y = CGRectGetMaxY(containerRect) - 44.0f;
-        self.clampButton.frame = buttonFrame;
+        //self.clampButton.frame = buttonFrame;
     }
 }
 
@@ -210,13 +203,13 @@
     else if (button == self.rotateButton && self.rotateButtonTapped) {
         self.rotateButtonTapped();
     }
-    else if (button == self.clampButton && self.clampButtonTapped) {
+    /*else if (button == self.clampButton && self.clampButtonTapped) {
         self.clampButtonTapped();
         return;
-    }
+    }*/
 }
 
-- (CGRect)clampButtonFrame
+/*- (CGRect)clampButtonFrame
 {
     return self.clampButton.frame;
 }
@@ -232,7 +225,7 @@
         self.clampButton.tintColor = nil;
     else
         self.clampButton.tintColor = [UIColor whiteColor];
-}
+}*/
 
 - (void)setRotateButtonHidden:(BOOL)rotateButtonHidden
 {
