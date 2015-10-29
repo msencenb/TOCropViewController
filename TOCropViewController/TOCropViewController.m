@@ -99,7 +99,12 @@ typedef NS_ENUM(NSInteger, TOCropViewControllerAspectRatio) {
     self.transitioningDelegate = self;
     
     self.view.backgroundColor = self.cropView.backgroundColor;
-    [self.cropView setAspectLockEnabledWithAspectRatio:CGSizeMake(15.2f, 10.9f) animated:YES];
+    if (self.image.size.width > self.image.size.height) {
+        [self.cropView setAspectLockEnabledWithAspectRatio:CGSizeMake(15.2f, 10.9f) animated:YES];
+    } else {
+        [self.cropView setAspectLockEnabledWithAspectRatio:CGSizeMake(10.9f, 15.2f) animated:YES];
+    }
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
